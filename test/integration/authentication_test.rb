@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class AuthenticationTest < ActionController::IntegrationTest
-  self.fixture_path = Rails.root.to_s + "/../fixtures"
-  fixtures :all
+ # self.fixture_path = Rails.root.to_s + "/../fixtures"
+ # fixtures :all
 
   def setup
     Tolk::ApplicationController.authenticator = proc do

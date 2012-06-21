@@ -1,4 +1,4 @@
-class ActiveRecord::Base
+class Tolk::Base
   mattr_accessor :shared_connection
   @@shared_connection = nil
 
@@ -9,4 +9,5 @@ end
 
 # Forces all threads to share the same connection. This works on
 # Capybara because it starts the web server in a thread.
-ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+Tolk::Base.shared_connection = Tolk::Base.connection
+#ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection

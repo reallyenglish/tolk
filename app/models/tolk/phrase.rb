@@ -1,5 +1,5 @@
 module Tolk
-  class Phrase < ActiveRecord::Base
+  class Phrase < Base
     self.table_name = "tolk_phrases"
 
     attr_accessible :key

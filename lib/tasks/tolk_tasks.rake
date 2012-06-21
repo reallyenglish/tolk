@@ -9,7 +9,7 @@ namespace :tolk do
   task :setup => :environment do
     system 'rails g tolk:install'
 
-    Rake::Task['db:migrate'].invoke
+    Rake::Task['tolk:create_database'].invoke
     Rake::Task['tolk:sync'].invoke
     Rake::Task['tolk:import'].invoke
   end
@@ -38,4 +38,13 @@ namespace :tolk do
     end
   end
 
+  desc "Create an sqlite database for tolk"
+  task :create_database => :environment do
+    puts "Creating tolk db"
+    ActiveRecord::Base.establish_connection(Tolk::Config.database_config)
+
+    ActiveRecord::Migrator.migrate(File.join(File.dirname(__FILE__), "..", "..", "db", "migrate"))
+
+    ActiveRecord::Base.establish_connection(Rails.env)
+  end
 end

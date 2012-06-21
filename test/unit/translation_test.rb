@@ -2,8 +2,6 @@ require 'test_helper'
 require 'fileutils'
 
 class TranslationTest < ActiveSupport::TestCase
-  fixtures :tolk_translations
-
   def setup
     Tolk::Locale.primary_locale(true)
   end

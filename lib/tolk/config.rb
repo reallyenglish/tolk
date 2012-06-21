@@ -10,6 +10,13 @@ module Tolk
 
       # Dump locale path by default the locales folder (config/locales)
       attr_accessor :dump_path
+
+      def database_config
+        { 
+          :adapter => "sqlite3",
+          :database => File.join(Rails.application.root, "db", "tolk.sqlite3")
+        }
+      end
       
       def reset
         @dump_path = Proc.new { "#{Rails.application.root}/config/locales" }

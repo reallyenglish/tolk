@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class TranslationProcessTest < ActiveSupport::IntegrationCase
+  include Tolk::Fixtures
   setup :setup_locales
 
   def test_adding_locale

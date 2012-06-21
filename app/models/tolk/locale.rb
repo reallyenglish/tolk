@@ -1,7 +1,7 @@
 require 'tolk/config'
 
 module Tolk
-  class Locale < ActiveRecord::Base
+  class Locale < Base
     self.table_name = "tolk_locales"
 
     def self._dump_path

@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class LocaleTest < ActiveSupport::TestCase
-  fixtures :all
-
   test "turning locale without nested phrases into a hash" do
     assert_equal({ "se" => { "hello_world" => "Hejsan Verdon" } }, tolk_locales(:se).to_hash)
   end
