@@ -21,7 +21,7 @@ production:
   pool: 5
   timeout: 5000
 
-tolk: 
+tolk:
   adapter: sqlite3
   database: db/tolk.sqlite3
   pool: 5

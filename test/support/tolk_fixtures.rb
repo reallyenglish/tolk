@@ -16,7 +16,7 @@ module Tolk
           klass = class_name.constantize
           @@fixtures[table] = {}
 
-          YAML.load(File.read(Rails.root.to_s + "/../fixtures/#{table}.yml")).each do |fixture_id, fixture|
+          YAML.load(File.read(File.dirname(__FILE__) + "/../fixtures/#{table}.yml")).each do |fixture_id, fixture|
             klass.create(fixture)
             @@fixtures[table][fixture_id] = ActiveRecord::Fixture.new(fixture, klass)
           end

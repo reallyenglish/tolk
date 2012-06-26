@@ -40,7 +40,7 @@ namespace :tolk do
 
   desc "Create an sqlite database for tolk"
   task :create_database => :environment do
-    puts "Creating tolk db"
+    puts "Creating tolk database"
     ActiveRecord::Base.establish_connection(Tolk::Config.database_config)
 
     ActiveRecord::Migrator.migrate(File.join(File.dirname(__FILE__), "..", "..", "db", "migrate"))

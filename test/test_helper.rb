@@ -1,7 +1,8 @@
 # Configure Rails Envinronment
 ENV["RAILS_ENV"] = "test"
-
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+TEST_APP =File.expand_path("../dummy/",  __FILE__)
+ 
+require File.expand_path("#{TEST_APP}/config/environment.rb",  __FILE__)
 
 ActiveRecord::IdentityMap.enabled = false
 require "rails/test_help"
@@ -17,9 +18,9 @@ require "capybara/rails"
 Capybara.default_driver   = :selenium
 Capybara.default_selector = :css
 
-FileUtils.rm(Dir[File.expand_path("../dummy/db/test.sqlite3", __FILE__)])
-FileUtils.rm(Dir[File.expand_path("../dummy/db/migrate/*.tolk.rb", __FILE__)])
-FileUtils.rm(Dir[File.expand_path("../dummy/db/tolk.sqlite3", __FILE__)])
+FileUtils.rm(Dir[File.expand_path("#{TEST_APP}/db/test.sqlite3", __FILE__)])
+FileUtils.rm(Dir[File.expand_path("#{TEST_APP}/db/migrate/*.tolk.rb", __FILE__)])
+FileUtils.rm(Dir[File.expand_path("#{TEST_APP}/db/tolk.sqlite3", __FILE__)])
 
 # Setup the tolk database
 Dummy::Application.load_tasks
