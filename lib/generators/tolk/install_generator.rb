@@ -49,7 +49,7 @@ CONFIG
       gsub_file "config/routes.rb", /mount Tolk::Engine => \'\/.+\'/, ''
       route("mount Tolk::Engine => '/#{namespace}', :as => 'tolk'")
 
-      display "Job's done: migrate, start your server and visit '/#{namespace}'!", :blue
+      display "Start your server and visit '/#{namespace}'!", :blue
 
     end
   end
