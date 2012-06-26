@@ -10,4 +10,3 @@ end
 # Forces all threads to share the same connection. This works on
 # Capybara because it starts the web server in a thread.
 Tolk::Base.shared_connection = Tolk::Base.connection
-#ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection

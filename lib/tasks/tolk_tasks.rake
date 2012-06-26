@@ -45,6 +45,6 @@ namespace :tolk do
 
     ActiveRecord::Migrator.migrate(File.join(File.dirname(__FILE__), "..", "..", "db", "migrate"))
 
-    ActiveRecord::Base.establish_connection(Rails.env)
+    ActiveRecord::Base.establish_connection(Rails.env) # hand the default database back to the current Rails environment
   end
 end

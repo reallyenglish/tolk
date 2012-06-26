@@ -10,7 +10,6 @@ module Tolk
   class InstallGenerator < Rails::Generators::Base
 
     source_root File.expand_path("../templates", __FILE__)
-    #include Rails::Generators::Migration
     include Generators::Utils::InstanceMethods
     extend Generators::Utils::ClassMethods
 
@@ -31,7 +30,6 @@ module Tolk
 
       display "Creating tolk db..."
       rake "tolk:create_database"
-      # migration_template 'migration.rb', 'db/migrate/create_tolk_tables.rb' rescue display $!.message
 
       namespace = ask_for("Where do you want to mount tolk?", "tolk", _namespace)
       gsub_file "config/routes.rb", /mount Tolk::Engine => \'\/.+\', :as => \'tolk\'/, ''

@@ -3,7 +3,6 @@ require 'active_support/core_ext/class/attribute_accessors'
 module Tolk
   module Config
 
-
     class << self
       # Mapping : a hash of the type { 'ar'    => 'Arabic' }
       attr_accessor :mapping
@@ -12,10 +11,7 @@ module Tolk
       attr_accessor :dump_path
 
       def database_config
-        { 
-          :adapter => "sqlite3",
-          :database => File.join(Rails.application.root, "db", "tolk.sqlite3")
-        }
+        ActiveRecord::Base.configurations["tolk"]
       end
       
       def reset
