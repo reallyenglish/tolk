@@ -20,6 +20,7 @@ module Tolk
       initializer = (File.open(Rails.root.join("config/initializers/tolk.rb")) rescue nil).try :read
 
       tolk_db_config = <<-CONFIG
+
 tolk: 
   adapter: sqlite3
   database: db/tolk.sqlite3
