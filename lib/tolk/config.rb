@@ -7,6 +7,9 @@ module Tolk
       # Mapping : a hash of the type { 'ar'    => 'Arabic' }
       attr_accessor :mapping
 
+      # keys to filter when importing translations
+      attr_accessor :filter_translation_keys
+
       # Dump locale path by default the locales folder (config/locales)
       attr_accessor :dump_path
 

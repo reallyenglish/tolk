@@ -5,7 +5,7 @@ module Tolk
     self.table_name = "tolk_locales"
 
     def self._dump_path
-      # Necessary to acces rails.root at runtime !
+      # Necessary to access rails.root at runtime !
       @dump_path ||= Tolk.config.dump_path.is_a?(Proc) ? instance_eval(&Tolk.config.dump_path) : Tolk.config.dump_path
     end
 

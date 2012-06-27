@@ -8,7 +8,7 @@ module Tolk
 
       def import_secondary_locales
         locales = Dir.entries(self.locales_config_path)
-        
+
         locale_block_filter = Proc.new { 
           |l| ['.', '..'].include?(l) ||
             !l.ends_with?('.yml') ||
@@ -45,7 +45,6 @@ module Tolk
     def read_locale_file
       locale_file = "#{self.locales_config_path}/#{self.name}.yml"
       raise "Locale file #{locale_file} does not exists" unless File.exists?(locale_file)
-
       self.class.flat_hash(YAML::load(IO.read(locale_file))[self.name])
     end
 

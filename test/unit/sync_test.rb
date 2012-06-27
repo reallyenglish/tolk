@@ -202,6 +202,28 @@ class SyncTest < ActiveSupport::TestCase
     assert_equal ['hello_world'], data.keys
     assert_equal 'hola', data['hello_world']
   ensure
-    FileUtils.rm_f(tmpdir)
+    FileUtils.rm_f(tmpdir) if tmpdir
+  end
+
+  def test_filters_out_i18n_keys 
+    Tolk::Locale.stubs(:read_primary_locale_file).returns("errors.message" => "Message", "i18n.something" => "Something")
+    translations = Tolk::Locale.load_translations
+
+    assert translations["i18n.something"].blank?, "#{translations.inspect} should not contain i18n.something"
+    assert translations["errors.message"].present?, "#{translations.inspect} should contain errors.message"
+
+    Tolk::Locale.unstub(:read_primary_locale_file)
+  end
+
+  def test_filters_out_additional_filtered_keys
+    Tolk::Config.filter_translation_keys = ["mongoid"]
+
+    Tolk::Locale.stubs(:read_primary_locale_file).returns("errors.message" => "Message", "mongoid.something" => "Something")
+    translations = Tolk::Locale.load_translations
+
+    assert translations["mongoid.something"].blank?, "#{translations.inspect} should not contain mongoid.something"
+    assert translations["errors.message"].present?, "#{translations.inspect} should contain errors.message"
+
+    Tolk::Locale.unstub(:read_primary_locale_file)
   end
 end
